@@ -1,5 +1,6 @@
 $white: #ffffff;
 $black: #000000;
+$gray: #858585;
 $dot--width: 70%;
 $dot--height: 70%;
 
@@ -45,10 +46,23 @@ body {
   align-items: center;
 }
 
+.dot--small {
+  width: $dot--width / 2;
+  height: $dot--height / 2;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .dot--white {
   background-color: $white;
 }
 
 .dot--black {
   background-color: $black;
+}
+
+.dot--gray {
+  background-color: $gray;
 }
