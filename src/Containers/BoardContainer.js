@@ -1,19 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import Button from "../Components/Button";
-import { clear } from "../store/modules/cacluate";
+import Board from "../Components/Board";
 
-function ClearContainer(props) {
-  const handleClear = () => {
-    props.clear();
-  };
-  return (
-    <Button
-      Onclick={() => handleClear()}
-      shape="calc__keyboard__ac"
-      value="AC"
-    ></Button>
-  );
+function BoardContainer(props) {
+  return <Board />;
 }
 
 const mapStateToProps = ({ calculate }) => ({
@@ -23,8 +13,6 @@ const mapStateToProps = ({ calculate }) => ({
   history: calculate.history,
 });
 
-const mapDispatchToProps = {
-  clear,
-};
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClearContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);
