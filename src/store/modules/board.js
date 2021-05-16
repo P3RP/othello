@@ -1,4 +1,4 @@
-import { updateBoard, prepareNextBoard } from "./othello";
+import { updateBoard, prepareNextBoard, getHistory } from "./othello";
 
 // 액션 타입 정의
 const PLAY = "board/PLAY";
@@ -52,12 +52,18 @@ export default function boardReducer(state = initialState, action) {
         state.canPass
       );
 
+      // History 작성
+      const new_history = getHistory(action.player, {
+        row: action.row,
+        col: action.col,
+      });
+
       return {
-        ...state,
         board: board,
         player: next_player,
         canPass: new_pass,
         isEnd: isEnd,
+        history: [...state.history, new_history],
       };
     }
 
@@ -74,12 +80,17 @@ export default function boardReducer(state = initialState, action) {
         state.canPass
       );
 
+      // History 작성
+      const new_history = getHistory(action.player, {
+        pass: "pass",
+      });
+
       return {
-        ...state,
         board: board,
         player: next_player,
         canPass: new_pass,
         isEnd: isEnd,
+        history: [...state.history, new_history],
       };
     }
 
