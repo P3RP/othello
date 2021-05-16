@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Board from "../Components/Board";
+import { refresh } from "../store/modules/board";
 
 function BoardContainer(props) {
   return <Board />;
@@ -8,6 +9,8 @@ function BoardContainer(props) {
 
 const mapStateToProps = ({ calculate }) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  refresh,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);
