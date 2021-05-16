@@ -1,4 +1,4 @@
-import { getBlockReverse, getClickAvailable, HEIGHT, WIDTH } from "./othello";
+import { updateBoard, prepareNextBoard } from "./othello";
 
 // 액션 타입 정의
 const PLAY = "board/PLAY";
@@ -28,83 +28,65 @@ const initialState = {
     [-1, -1, -1, -1, -1, -1, -1, -1],
   ],
   player: 0,
+  pass: [false, false],
+  isEnd: false,
+  history: [],
 };
 
 // 리듀서 정의
 export default function boardReducer(state = initialState, action) {
   switch (action.type) {
     case PLAY: {
-      // 새로운 상태의 보드 생성
-      const new_board = state.board.map((v) => v.slice());
+      // 선택한 칸에 대해서 보드 업데이트
+      const new_board = updateBoard(
+        state.board,
+        action.row,
+        action.col,
+        action.player
+      );
 
-      // 선택한 위치로 인해 뒤집어지는 타일 변경
-      console.log(action);
-      console.log(getBlockReverse(new_board, action));
-      getBlockReverse(new_board, action).forEach((element) => {
-        new_board[element[0]][element[1]] = action.player;
-      });
-
-      // 선택한 위치 타일 변경
-      new_board[action.row][action.col] = action.player;
-
-      // 플레이어 변경
-      const player = action.player ^ 1;
-
-      // 기존 선택 가능 블록 제거
-      for (let i = 0; i < HEIGHT; i++) {
-        for (let j = 0; j < WIDTH; j++) {
-          if (new_board[i][j] === 2) {
-            new_board[i][j] = -1;
-          }
-        }
-      }
-
-      // 선택 가능 블록 생성
-      const clickable_block = getClickAvailable(new_board, player);
-      if (!clickable_block.length) {
-        // 두 플레이어 모두 패스를 한 경우, 게임 종료!
-        end();
-      }
-      clickable_block.forEach((element) => {
-        new_board[element[0]][element[1]] = 2;
-      });
+      // 다음 차례를 위한 보드 준비
+      const [board, next_player, new_pass] = prepareNextBoard(
+        new_board,
+        action.player,
+        state.pass
+      );
 
       return {
-        board: new_board,
-        player: player,
+        ...state,
+        board: board,
+        player: next_player,
+        pass: new_pass,
       };
     }
 
     case PASS: {
-      console.log("pass!!");
+      console.log((action.player === 1 ? "Black" : "White") + " pass!!");
 
       // 새로운 상태의 보드 생성
       const new_board = state.board.map((v) => v.slice());
 
-      // 플레이어 변경
-      const player = action.player ^ 1;
-
-      // 기존 선택 가능 블록 제거
-      for (let i = 0; i < HEIGHT; i++) {
-        for (let j = 0; j < WIDTH; j++) {
-          if (new_board[i][j] === 2) {
-            new_board[i][j] = -1;
-          }
-        }
-      }
-
-      // 선택 가능 블록 생성
-      const clickable_block = getClickAvailable(new_board, player);
-      if (!clickable_block.length) {
-        pass(player);
-      }
-      clickable_block.forEach((element) => {
-        new_board[element[0]][element[1]] = 2;
-      });
+      // 다음 차례를 위한 보드 준비
+      const [board, next_player, new_pass] = prepareNextBoard(
+        new_board,
+        action.player,
+        state.pass
+      );
 
       return {
-        board: new_board,
-        player: player,
+        ...state,
+        board: board,
+        player: next_player,
+        pass: new_pass,
+      };
+    }
+
+    case END: {
+      console.log("end");
+
+      return {
+        ...state,
+        isEnd: true,
       };
     }
 

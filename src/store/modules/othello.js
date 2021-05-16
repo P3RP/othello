@@ -16,6 +16,56 @@ const LEFTDOWN = { row: 1, col: -1 };
 const RIGHTUP = { row: -1, col: 1 };
 const RIGHTDOWN = { row: 1, col: 1 };
 
+// 보드 업데이트
+export const updateBoard = (board, row, col, player) => {
+  // 새로운 상태의 보드 생성
+  const new_board = board.map((v) => v.slice());
+
+  // 선택한 위치로 인해 뒤집어지는 타일 변경
+  getBlockReverse(new_board, {
+    row: row,
+    col: col,
+    player: player,
+  }).forEach((element) => {
+    new_board[element[0]][element[1]] = player;
+  });
+
+  // 선택한 위치 타일 변경
+  new_board[row][col] = player;
+
+  // 기존 선택 가능 블록 제거
+  for (let i = 0; i < HEIGHT; i++) {
+    for (let j = 0; j < WIDTH; j++) {
+      if (new_board[i][j] === 2) {
+        new_board[i][j] = -1;
+      }
+    }
+  }
+
+  return new_board;
+};
+
+// 다음 차례를 위해 보드 설정
+export const prepareNextBoard = (board, player, pass) => {
+  // 플레이어 변경
+  const next_player = player ^ 1;
+
+  // 선택 가능 블록 생성
+  const new_pass = [...pass];
+  const clickable_block = getClickAvailable(board, next_player);
+  if (!clickable_block.length) {
+    // 다음 사용자 Pass 허용
+    new_pass[next_player] = true;
+  } else {
+    new_pass[next_player] = false;
+    clickable_block.forEach((element) => {
+      board[element[0]][element[1]] = 2;
+    });
+  }
+
+  return [board, next_player, new_pass];
+};
+
 // 한 방향으로 뒤집을 수 있는 목록
 const checkDirectionReverse = (board, info, direction) => {
   let row = info["row"];
