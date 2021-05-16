@@ -4,9 +4,7 @@ import Pass from "../Components/Pass";
 import { pass } from "../store/modules/board";
 
 function PassContainer(props) {
-  return !props.isEnd &&
-    props.canPass[props.player] &&
-    !(props.canPass[0] && props.canPass[1]) ? (
+  return !props.isEnd && props.canPass[props.player] ? (
     <Pass onPass={() => props.pass(props.player)} />
   ) : null;
 }

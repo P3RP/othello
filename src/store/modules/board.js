@@ -46,7 +46,7 @@ export default function boardReducer(state = initialState, action) {
       );
 
       // 다음 차례를 위한 보드 준비
-      const [board, next_player, new_pass] = prepareNextBoard(
+      const [board, next_player, new_pass, isEnd] = prepareNextBoard(
         new_board,
         action.player,
         state.canPass
@@ -57,6 +57,7 @@ export default function boardReducer(state = initialState, action) {
         board: board,
         player: next_player,
         canPass: new_pass,
+        isEnd: isEnd,
       };
     }
 
@@ -67,7 +68,7 @@ export default function boardReducer(state = initialState, action) {
       const new_board = state.board.map((v) => v.slice());
 
       // 다음 차례를 위한 보드 준비
-      const [board, next_player, new_pass] = prepareNextBoard(
+      const [board, next_player, new_pass, isEnd] = prepareNextBoard(
         new_board,
         action.player,
         state.canPass
@@ -78,6 +79,7 @@ export default function boardReducer(state = initialState, action) {
         board: board,
         player: next_player,
         canPass: new_pass,
+        isEnd: isEnd,
       };
     }
 

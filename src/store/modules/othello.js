@@ -53,7 +53,15 @@ export const prepareNextBoard = (board, player, pass) => {
     });
   }
 
-  return [board, next_player, new_pass];
+  // 게임 종료 여부 확인
+  let isEnd;
+  if ((new_pass[0] && new_pass[1]) || isBoardFullOne(board)) {
+    isEnd = true;
+  } else {
+    isEnd = false;
+  }
+
+  return [board, next_player, new_pass, isEnd];
 };
 
 // -----------------------------------------
@@ -145,22 +153,23 @@ export const getClickAvailable = (board, player) => {
 // -----------------------------------------
 // 종료 조건
 // -----------------------------------------
-const isBoardFull = (board) => {
+
+// 모든 칸이 사용되거나 전체 칩이 한 종류인 경우
+const isBoardFullOne = (board) => {
+  let empty = HEIGHT * WIDTH;
   const check = new Set();
 
-  // 보드 내의 중복 제거
-  board.forEach((element) => {
-    element.forEach((i) => {
-      check.add(i);
-    });
-  });
+  board.forEach((row) =>
+    row.forEach((element) => {
+      if (element === 0 || element === 1) {
+        // 빈칸 개수 세기
+        empty -= 1;
 
-  // 보드 내 -1, 2 값 존재 여부 확인
-  if (
-    JSON.stringify([...check].sort((a, b) => a - b)) === JSON.stringify([0, 1])
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+        // 칩 종류 확인
+        check.add(element);
+      }
+    })
+  );
+
+  return !empty || check.length === 1 ? true : false;
 };
