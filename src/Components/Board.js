@@ -1,5 +1,5 @@
 import React from "react";
-import Block from "./Block";
+import BlockContainer from "../Containers/BlockContainer";
 
 function Board({ board, onPlay }) {
   const HEIGHT = 8;
@@ -18,13 +18,7 @@ function Board({ board, onPlay }) {
   const trs = trIdx.map((row) => (
     <tr key={row}>
       {tdIdx.map((col) => (
-        <Block
-          OnClick={board[row][col] === -1 ? () => onPlay(row, col) : ""}
-          className="Block"
-          key={col}
-          row={row}
-          col={col}
-        />
+        <BlockContainer key={col} row={row} col={col} />
       ))}
     </tr>
   ));
