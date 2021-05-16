@@ -1,10 +1,8 @@
 import React from "react";
 import BlockContainer from "../Containers/BlockContainer";
+import { HEIGHT, WIDTH } from "../store/modules/othello";
 
 function Board({ board, onPlay }) {
-  const HEIGHT = 8;
-  const WIDTH = 8;
-
   const trIdx = [];
   for (let i = 0; i < HEIGHT; i++) {
     trIdx[i] = i;
