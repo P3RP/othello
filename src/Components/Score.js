@@ -15,6 +15,15 @@ function Score(props) {
 
       <div>남은 칸 : {props.count.e}</div>
 
+      <div>
+        현재 차례 :
+        {props.player ? (
+          <span className="dot dot--white"></span>
+        ) : (
+          <span className="dot dot--black"></span>
+        )}
+      </div>
+
       {props.isEnd ? <div>End!!</div> : null}
     </div>
   );
