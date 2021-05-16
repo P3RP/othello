@@ -3,18 +3,8 @@ export const HEIGHT = 8;
 export const WIDTH = 8;
 
 // -----------------------------------------
-// 진행 조건
+// 진행
 // -----------------------------------------
-
-// 방향
-const UP = { row: -1, col: 0 };
-const DOWN = { row: 1, col: 0 };
-const LEFT = { row: 0, col: -1 };
-const RIGHT = { row: 0, col: 1 };
-const LEFTUP = { row: -1, col: -1 };
-const LEFTDOWN = { row: 1, col: -1 };
-const RIGHTUP = { row: -1, col: 1 };
-const RIGHTDOWN = { row: 1, col: 1 };
 
 // 보드 업데이트
 export const updateBoard = (board, row, col, player) => {
@@ -66,6 +56,20 @@ export const prepareNextBoard = (board, player, pass) => {
   return [board, next_player, new_pass];
 };
 
+// -----------------------------------------
+// 진행 조건
+// -----------------------------------------
+
+// 방향
+const UP = { row: -1, col: 0 };
+const DOWN = { row: 1, col: 0 };
+const LEFT = { row: 0, col: -1 };
+const RIGHT = { row: 0, col: 1 };
+const LEFTUP = { row: -1, col: -1 };
+const LEFTDOWN = { row: 1, col: -1 };
+const RIGHTUP = { row: -1, col: 1 };
+const RIGHTDOWN = { row: 1, col: 1 };
+
 // 한 방향으로 뒤집을 수 있는 목록
 const checkDirectionReverse = (board, info, direction) => {
   let row = info["row"];
@@ -93,7 +97,7 @@ const checkDirectionReverse = (board, info, direction) => {
     const block_state = board[row][col];
     if (block_state === player) {
       return result;
-    } else if (block_state === -1) {
+    } else if (block_state === -1 || block_state === 2) {
       return [];
     } else {
       result.push([row, col]);
