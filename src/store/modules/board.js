@@ -28,7 +28,7 @@ const initialState = {
     [-1, -1, -1, -1, -1, -1, -1, -1],
   ],
   player: 0,
-  pass: [false, false],
+  canPass: [false, false],
   isEnd: false,
   history: [],
 };
@@ -49,14 +49,14 @@ export default function boardReducer(state = initialState, action) {
       const [board, next_player, new_pass] = prepareNextBoard(
         new_board,
         action.player,
-        state.pass
+        state.canPass
       );
 
       return {
         ...state,
         board: board,
         player: next_player,
-        pass: new_pass,
+        canPass: new_pass,
       };
     }
 
@@ -70,14 +70,14 @@ export default function boardReducer(state = initialState, action) {
       const [board, next_player, new_pass] = prepareNextBoard(
         new_board,
         action.player,
-        state.pass
+        state.canPass
       );
 
       return {
         ...state,
         board: board,
         player: next_player,
-        pass: new_pass,
+        canPass: new_pass,
       };
     }
 
