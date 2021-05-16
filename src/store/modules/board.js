@@ -1,9 +1,9 @@
 // 액션 타입 정의
-const CHANGE = "board/CHANGE";
+const PLAY = "board/PLAY";
 
 // 액션 생성 함수 정의
-export const refresh = (row, col, player) => ({
-  type: CHANGE,
+export const play = (row, col, player) => ({
+  type: PLAY,
   row,
   col,
   player,
@@ -27,7 +27,7 @@ const initialState = {
 // 리듀서 정의
 export default function boardReducer(state = initialState, action) {
   switch (action.type) {
-    case CHANGE:
+    case PLAY:
       const new_board = state.board.map((v) => v.slice());
       new_board[action.row][action.col] = action.player;
       const player = action.player ^ 1;

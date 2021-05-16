@@ -1,16 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import Board from "../Components/Board";
-import { refresh } from "../store/modules/board";
+import { play } from "../store/modules/board";
 
 function BoardContainer(props) {
-  return <Board />;
+  const handlePlay = (row, col) => {
+    props.play(row, col, props.player);
+  };
+
+  return <Board board={props.board} onPlay={handlePlay} />;
 }
 
-const mapStateToProps = ({ calculate }) => ({});
+const mapStateToProps = ({ state }) => ({
+  board: state.board,
+  player: state.player,
+});
 
 const mapDispatchToProps = {
-  refresh,
+  play,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardContainer);

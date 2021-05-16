@@ -1,7 +1,7 @@
 import React from "react";
 import Block from "./Block";
 
-function Board(props) {
+function Board({ board, onPlay }) {
   const HEIGHT = 8;
   const WIDTH = 8;
 
@@ -15,10 +15,16 @@ function Board(props) {
     tdIdx[i] = i;
   }
 
-  const trs = trIdx.map((low) => (
-    <tr key={low}>
+  const trs = trIdx.map((row) => (
+    <tr key={row}>
       {tdIdx.map((col) => (
-        <Block className="Block" key={col} low={low} col={col} />
+        <Block
+          OnClick={board[row][col] === -1 ? () => onPlay(row, col) : ""}
+          className="Block"
+          key={col}
+          row={row}
+          col={col}
+        />
       ))}
     </tr>
   ));
