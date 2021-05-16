@@ -4,7 +4,9 @@ import Pass from "../Components/Pass";
 import { pass } from "../store/modules/board";
 
 function PassContainer(props) {
-  return props.canPass[props.player] ? (
+  return !props.isEnd &&
+    props.canPass[props.player] &&
+    !(props.canPass[0] && props.canPass[1]) ? (
     <Pass onPass={() => props.pass(props.player)} />
   ) : null;
 }
@@ -12,6 +14,7 @@ function PassContainer(props) {
 const mapStateToProps = (state) => ({
   player: state.boardReducer.player,
   canPass: state.boardReducer.canPass,
+  isEnd: state.boardReducer.isEnd,
 });
 
 const mapDispatchToProps = {

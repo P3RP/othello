@@ -7,10 +7,10 @@ function Block(props) {
       state = "";
       break;
     case 0:
-      state = <span className="dot dot--white"></span>;
+      state = <span className="dot dot--black"></span>;
       break;
     case 1:
-      state = <span className="dot dot--black"></span>;
+      state = <span className="dot dot--white"></span>;
       break;
     case 2:
       state = <span className="dot--small dot--gray"></span>;
