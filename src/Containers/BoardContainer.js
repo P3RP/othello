@@ -6,12 +6,7 @@ function BoardContainer(props) {
   return <Board />;
 }
 
-const mapStateToProps = ({ calculate }) => ({
-  first: calculate.first,
-  second: calculate.second,
-  operator: calculate.operator,
-  history: calculate.history,
-});
+const mapStateToProps = ({ calculate }) => ({});
 
 const mapDispatchToProps = {};
 
