@@ -30,9 +30,11 @@ function Board({ board, onPlay }) {
   ));
 
   return (
-    <table>
-      <tbody>{trs}</tbody>
-    </table>
+    <>
+      <table>
+        <tbody>{trs}</tbody>
+      </table>
+    </>
   );
 }
 

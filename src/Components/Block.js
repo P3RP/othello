@@ -7,16 +7,16 @@ function Block(props) {
       state = "";
       break;
     case 0:
-      state = <span className="dot--white"></span>;
+      state = <span className="dot dot--white"></span>;
       break;
     case 1:
-      state = <span className="dot--black"></span>;
+      state = <span className="dot dot--black"></span>;
       break;
     default:
       break;
   }
 
-  return <div onClick={props.Onclick}>{state}</div>;
+  return <td onClick={props.OnClick}>{state}</td>;
 }
 
 export default Block;

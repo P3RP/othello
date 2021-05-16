@@ -11,9 +11,9 @@ function BoardContainer(props) {
   return <Board board={props.board} onPlay={handlePlay} />;
 }
 
-const mapStateToProps = ({ state }) => ({
-  board: state.board,
-  player: state.player,
+const mapStateToProps = (state) => ({
+  board: state.boardReducer.board,
+  player: state.boardReducer.player,
 });
 
 const mapDispatchToProps = {
