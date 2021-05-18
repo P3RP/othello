@@ -183,9 +183,14 @@ const getLocation = (row, col) => {
 };
 
 export const getHistory = (player, action) => {
-  const p_name = player ? "W" : "B";
   if ("pass" in action) {
-    return p_name + " : Pass";
+    return {
+      player: player,
+      action: "Pass",
+    };
   }
-  return p_name + " : " + getLocation(action.row, action.col);
+  return {
+    player: player,
+    action: getLocation(action.row, action.col),
+  };
 };

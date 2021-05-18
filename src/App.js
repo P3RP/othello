@@ -8,16 +8,14 @@ import HistoryContainer from "./Containers/HistoryContainer";
 function App() {
   return (
     <div className="App">
-      <div>
-        <ScoreContainer />
-      </div>
+      <ScoreContainer />
       <div>
         <BoardContainer />
-        <PassContainer />
       </div>
       <div>
         <HistoryContainer />
       </div>
+      <PassContainer />
     </div>
   );
 }

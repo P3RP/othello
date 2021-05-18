@@ -13,8 +13,23 @@ function Board({ board, onPlay }) {
     tdIdx[i] = i;
   }
 
+  const colHeader = (
+    <tr>
+      <td></td>
+      <td>A</td>
+      <td>B</td>
+      <td>C</td>
+      <td>D</td>
+      <td>E</td>
+      <td>F</td>
+      <td>G</td>
+      <td>H</td>
+    </tr>
+  );
+
   const trs = trIdx.map((row) => (
     <tr key={row}>
+      <td>{row + 1}</td>
       {tdIdx.map((col) => (
         <BlockContainer key={col} row={row} col={col} />
       ))}
@@ -24,6 +39,7 @@ function Board({ board, onPlay }) {
   return (
     <>
       <table>
+        <thead>{colHeader}</thead>
         <tbody>{trs}</tbody>
       </table>
     </>

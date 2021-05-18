@@ -4,29 +4,12 @@ $gray: #858585;
 $dot--width: 70%;
 $dot--height: 70%;
 
-$width: 30px;
+$size: 50px;
 
-td {
-  border: 4px solid;
-  padding: 0px;
-  width: $width;
-  height: $width;
-  text-align: center;
-}
-
-table {
-  border: 4px solid;
-  padding: 4px;
-  margin-bottom: 100px;
-  background-color: #ffcc99;
-}
-
-* {
-  box-sizing: border-box;
-}
 body {
-  background-color: $white;
+  background-color: #bbbbbb;
   font-size: 30px;
+  margin: 0;
 }
 
 .App {
@@ -35,34 +18,124 @@ body {
   justify-content: center;
   align-items: center;
   min-width: 320px;
+  flex-direction: column;
+}
+
+// Info
+.info-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count-board {
+  display: flex;
+  width: 600px;
+  justify-content: space-evenly;
+}
+
+td {
+  border: 4px solid;
+  padding: 0px;
+  width: $size;
+  height: $size;
+  text-align: center;
+}
+
+table {
+  border: 4px solid;
+  padding: 4px;
+  background-color: #ffcc99;
+}
+
+.dot-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dot {
   width: $dot--width;
   height: $dot--height;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+}
+
+.dot--big {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .dot--small {
   width: $dot--width / 2;
   height: $dot--height / 2;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
 }
 
-.dot--white {
+.color--white {
   background-color: $white;
 }
 
-.dot--black {
+.color--black {
   background-color: $black;
 }
 
-.dot--gray {
+.color--gray {
   background-color: $gray;
+}
+
+.history {
+  height: 100px;
+}
+
+.history--title {
+  text-align: center;
+}
+
+.history--container {
+  width: 550px;
+  overflow-x: auto;
+  display: flex;
+}
+
+.history--block {
+  flex: none;
+  margin: 0 10px;
+  border-radius: 10%;
+  font-size: 25px;
+}
+
+.history--black {
+  background-color: $black;
+  color: $white;
+}
+
+.history--white {
+  background-color: $white;
+  color: $black;
+}
+
+.pass-btn {
+  border-radius: 10%;
+  font-size: 40px;
+  background-color: #ff0000;
+  color: $black;
+  text-align: center;
+  width: 110px;
+  height: 55px;
+  cursor: pointer;
+}
+
+.game-title {
+  font-size: 60px;
+  background-color: #faebd7;
+  width: 250px;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 25%;
 }

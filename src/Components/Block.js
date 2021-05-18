@@ -7,20 +7,22 @@ function Block(props) {
       state = "";
       break;
     case 0:
-      state = <span className="dot dot--black"></span>;
+      state = <span className="dot color--black"></span>;
       break;
     case 1:
-      state = <span className="dot dot--white"></span>;
+      state = <span className="dot color--white"></span>;
       break;
     case 2:
-      state = <span className="dot--small dot--gray"></span>;
+      state = <span className="dot--small color--gray"></span>;
       break;
     default:
       break;
   }
 
   return (
-    <td onClick={props.value === 2 ? props.OnClick : () => {}}>{state}</td>
+    <td onClick={props.value === 2 ? props.OnClick : () => {}}>
+      <div className="dot-container">{state}</div>
+    </td>
   );
 }
 

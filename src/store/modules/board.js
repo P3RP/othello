@@ -63,7 +63,7 @@ export default function boardReducer(state = initialState, action) {
         player: next_player,
         canPass: new_pass,
         isEnd: isEnd,
-        history: [...state.history, new_history],
+        history: [new_history, ...state.history],
       };
     }
 
@@ -90,7 +90,7 @@ export default function boardReducer(state = initialState, action) {
         player: next_player,
         canPass: new_pass,
         isEnd: isEnd,
-        history: [...state.history, new_history],
+        history: [new_history, ...state.history],
       };
     }
 
