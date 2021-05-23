@@ -7,6 +7,9 @@ const UNDO = "board/UNDO";
 const END = "board/END";
 
 const CONNECT = "multi/CONNECT";
+const CREATE = "multi/CREATE";
+const JOIN = "multi/JOIN";
+const OPPONENT = "multi/OPPONENT";
 
 // 액션 생성 함수 정의
 export const play = (row, col, player) => ({
@@ -20,6 +23,18 @@ export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
 
 export const connectMulti = (socket) => ({ type: CONNECT, socket });
+export const createMulti = (player, room) => ({
+  type: CREATE,
+  player,
+  room,
+});
+export const joinMulti = (player, opponent, room) => ({
+  type: JOIN,
+  player,
+  opponent,
+  room,
+});
+export const opponent = (opponent) => ({ type: OPPONENT, opponent });
 
 // 초기 상태 정의
 const initialState = {
@@ -41,9 +56,9 @@ const initialState = {
   },
   multi: {
     socket: "",
-    user: "",
+    user: -1,
+    name: "",
     opponent: "",
-    hasOpponent: false,
     room: "",
     ready: false,
   },
@@ -144,6 +159,41 @@ export const boardReducer = (state = initialState, action) => {
         multi: {
           ...state.multi,
           socket: action.socket,
+        },
+      };
+    }
+
+    case CREATE: {
+      return {
+        ...state,
+        multi: {
+          ...state.multi,
+          user: action.player.player,
+          name: action.player.name,
+          room: action.room,
+        },
+      };
+    }
+
+    case JOIN: {
+      return {
+        ...state,
+        multi: {
+          ...state.multi,
+          user: action.player.player,
+          name: action.player.name,
+          room: action.room,
+          opponent: action.opponent,
+        },
+      };
+    }
+
+    case OPPONENT: {
+      return {
+        ...state,
+        multi: {
+          ...state.multi,
+          opponent: action.opponent,
         },
       };
     }
