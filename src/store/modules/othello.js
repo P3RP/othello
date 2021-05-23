@@ -182,15 +182,17 @@ const getLocation = (row, col) => {
   return String.fromCharCode(65 + col) + (row + 1);
 };
 
-export const getHistory = (player, action) => {
+export const getHistory = (state, action) => {
   if ("pass" in action) {
     return {
-      player: player,
+      player: state.player,
       action: "Pass",
+      undo: state,
     };
   }
   return {
-    player: player,
+    player: state.player,
     action: getLocation(action.row, action.col),
+    undo: state,
   };
 };
