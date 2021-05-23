@@ -17,20 +17,22 @@ export const end = () => ({ type: END });
 
 // 초기 상태 정의
 const initialState = {
-  board: [
-    [-1, -1, -1, -1, -1, -1, -1, -1],
-    [-1, -1, -1, -1, -1, -1, -1, -1],
-    [-1, -1, -1, -1, 2, -1, -1, -1],
-    [-1, -1, -1, 0, 1, 2, -1, -1],
-    [-1, -1, 2, 1, 0, -1, -1, -1],
-    [-1, -1, -1, 2, -1, -1, -1, -1],
-    [-1, -1, -1, -1, -1, -1, -1, -1],
-    [-1, -1, -1, -1, -1, -1, -1, -1],
-  ],
-  player: 0,
-  canPass: [false, false],
-  isEnd: false,
   history: [],
+  present: {
+    board: [
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, 2, -1, -1, -1],
+      [-1, -1, -1, 0, 1, 2, -1, -1],
+      [-1, -1, 2, 1, 0, -1, -1, -1],
+      [-1, -1, -1, 2, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+    ],
+    player: 0,
+    canPass: [false, false],
+    isEnd: false,
+  },
 };
 
 // 리듀서 정의
@@ -39,7 +41,7 @@ export default function boardReducer(state = initialState, action) {
     case PLAY: {
       // 선택한 칸에 대해서 보드 업데이트
       const new_board = updateBoard(
-        state.board,
+        state.present.board,
         action.row,
         action.col,
         action.player
@@ -49,7 +51,7 @@ export default function boardReducer(state = initialState, action) {
       const [board, next_player, new_pass, isEnd] = prepareNextBoard(
         new_board,
         action.player,
-        state.canPass
+        state.present.canPass
       );
 
       // History 작성
@@ -59,11 +61,13 @@ export default function boardReducer(state = initialState, action) {
       });
 
       return {
-        board: board,
-        player: next_player,
-        canPass: new_pass,
-        isEnd: isEnd,
         history: [new_history, ...state.history],
+        present: {
+          board: board,
+          player: next_player,
+          canPass: new_pass,
+          isEnd: isEnd,
+        },
       };
     }
 
@@ -71,13 +75,13 @@ export default function boardReducer(state = initialState, action) {
       console.log((action.player === 1 ? "Black" : "White") + " pass!!");
 
       // 새로운 상태의 보드 생성
-      const new_board = state.board.map((v) => v.slice());
+      const new_board = state.present.board.map((v) => v.slice());
 
       // 다음 차례를 위한 보드 준비
       const [board, next_player, new_pass, isEnd] = prepareNextBoard(
         new_board,
         action.player,
-        state.canPass
+        state.present.canPass
       );
 
       // History 작성
@@ -86,11 +90,13 @@ export default function boardReducer(state = initialState, action) {
       });
 
       return {
-        board: board,
-        player: next_player,
-        canPass: new_pass,
-        isEnd: isEnd,
         history: [new_history, ...state.history],
+        present: {
+          board: board,
+          player: next_player,
+          canPass: new_pass,
+          isEnd: isEnd,
+        },
       };
     }
 
@@ -99,7 +105,10 @@ export default function boardReducer(state = initialState, action) {
 
       return {
         ...state,
-        isEnd: true,
+        present: {
+          ...state.present,
+          isEnd: true,
+        },
       };
     }
 

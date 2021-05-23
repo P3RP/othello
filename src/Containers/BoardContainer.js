@@ -7,8 +7,8 @@ function BoardContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  board: state.boardReducer.board,
-  player: state.boardReducer.player,
+  board: state.boardReducer.present.board,
+  player: state.boardReducer.present.player,
 });
 
 const mapDispatchToProps = {};
