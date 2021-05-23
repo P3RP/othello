@@ -6,6 +6,8 @@ const PASS = "board/PASS";
 const UNDO = "board/UNDO";
 const END = "board/END";
 
+const CONNECT = "multi/CONNECT";
+
 // 액션 생성 함수 정의
 export const play = (row, col, player) => ({
   type: PLAY,
@@ -16,6 +18,8 @@ export const play = (row, col, player) => ({
 export const pass = (player) => ({ type: PASS, player });
 export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
+
+export const connectMulti = (socket) => ({ type: CONNECT, socket });
 
 // 초기 상태 정의
 const initialState = {
@@ -130,6 +134,16 @@ export const boardReducer = (state = initialState, action) => {
         present: {
           ...state.present,
           isEnd: true,
+        },
+      };
+    }
+
+    case CONNECT: {
+      return {
+        ...state,
+        multi: {
+          ...state.multi,
+          socket: action.socket,
         },
       };
     }
