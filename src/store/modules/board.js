@@ -35,6 +35,14 @@ const initialState = {
     canPass: [false, false],
     isEnd: false,
   },
+  multi: {
+    socket: "",
+    user: "",
+    opponent: "",
+    hasOpponent: false,
+    room: "",
+    ready: false,
+  },
 };
 
 // 리듀서 정의
