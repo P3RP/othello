@@ -4,6 +4,7 @@ import BoardContainer from "./Containers/BoardContainer";
 import PassContainer from "./Containers/PassContainer";
 import ScoreContainer from "./Containers/ScoreContainer";
 import HistoryContainer from "./Containers/HistoryContainer";
+import UndoContainer from "./Containers/UndoContainer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <HistoryContainer />
       </div>
       <PassContainer />
+      <UndoContainer />
     </div>
   );
 }

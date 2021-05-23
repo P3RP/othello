@@ -57,7 +57,7 @@ export default function boardReducer(state = initialState, action) {
       );
 
       // History 작성
-      const new_history = getHistory(state, {
+      const new_history = getHistory(state.present, {
         row: action.row,
         col: action.col,
       });
@@ -87,7 +87,7 @@ export default function boardReducer(state = initialState, action) {
       );
 
       // History 작성
-      const new_history = getHistory(state, {
+      const new_history = getHistory(state.present, {
         pass: "pass",
       });
 
@@ -110,7 +110,7 @@ export default function boardReducer(state = initialState, action) {
 
       return {
         history: new_history,
-        present: undo,
+        present: undo.undo,
       };
     }
 

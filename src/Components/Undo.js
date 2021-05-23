@@ -3,7 +3,7 @@ import React from "react";
 function Undo(props) {
   return (
     <div onClick={props.onPass} className="pass-btn">
-      PASS!
+      Undo
     </div>
   );
 }
