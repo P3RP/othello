@@ -3,6 +3,7 @@ import { updateBoard, prepareNextBoard, getHistory } from "./othello";
 // 액션 타입 정의
 const PLAY = "board/PLAY";
 const PASS = "board/PASS";
+const UNDO = "board/UNDO";
 const END = "board/END";
 
 // 액션 생성 함수 정의
@@ -13,6 +14,7 @@ export const play = (row, col, player) => ({
   player,
 });
 export const pass = (player) => ({ type: PASS, player });
+export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
 
 // 초기 상태 정의
@@ -97,6 +99,18 @@ export default function boardReducer(state = initialState, action) {
           canPass: new_pass,
           isEnd: isEnd,
         },
+      };
+    }
+
+    case UNDO: {
+      console.log("undo");
+
+      const new_history = state.history.slice();
+      const undo = new_history.shift();
+
+      return {
+        history: new_history,
+        present: undo,
       };
     }
 
