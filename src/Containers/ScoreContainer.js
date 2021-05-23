@@ -29,9 +29,9 @@ function ScoreContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  board: state.boardReducer.present.board,
-  player: state.boardReducer.present.player,
-  isEnd: state.boardReducer.present.isEnd,
+  board: state.boardState.present.board,
+  player: state.boardState.present.player,
+  isEnd: state.boardState.present.isEnd,
 });
 
 const mapDispatchToProps = {

@@ -10,9 +10,9 @@ function PassContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  player: state.boardReducer.present.player,
-  canPass: state.boardReducer.present.canPass,
-  isEnd: state.boardReducer.present.isEnd,
+  player: state.boardState.present.player,
+  canPass: state.boardState.present.canPass,
+  isEnd: state.boardState.present.isEnd,
 });
 
 const mapDispatchToProps = {

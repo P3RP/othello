@@ -10,7 +10,7 @@ const initialState = {
 };
 
 // 리듀서 정의
-export default function gameReducer(state = initialState, action) {
+export const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT: {
       return {
@@ -20,4 +20,4 @@ export default function gameReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};

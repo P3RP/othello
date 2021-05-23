@@ -38,7 +38,7 @@ const initialState = {
 };
 
 // 리듀서 정의
-export default function boardReducer(state = initialState, action) {
+export const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case PLAY: {
       // 선택한 칸에 대해서 보드 업데이트
@@ -129,4 +129,4 @@ export default function boardReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};

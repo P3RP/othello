@@ -7,7 +7,7 @@ function HistoryContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  history: state.boardReducer.history,
+  history: state.boardState.history,
 });
 
 const mapDispatchToProps = {};

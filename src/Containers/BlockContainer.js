@@ -18,8 +18,8 @@ function BlockContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  board: state.boardReducer.present.board,
-  player: state.boardReducer.present.player,
+  board: state.boardState.present.board,
+  player: state.boardState.present.player,
 });
 
 const mapDispatchToProps = {
