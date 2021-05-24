@@ -39,13 +39,20 @@ function RoomContainer(props) {
     }
   };
 
+  // 방 생성 완료 시 작동
   props.multi.socket.on("create", (room) => {
     console.log(room);
     props.createMulti({ player: 0, name: userName }, room);
   });
 
+  // 방 입장 완료 시 작동
   props.multi.socket.on("join", (opponent) => {
     props.joinMulti({ player: 1, name: userName }, opponent, roomId);
+  });
+
+  // 오류 발생 시 메시지 전달 받음
+  props.multi.socket.on("e_msg", (msg) => {
+    console.log(msg);
   });
 
   if (props.multi.room !== "") {
