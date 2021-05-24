@@ -5,7 +5,29 @@ import { play } from "../store/modules/board";
 
 function BlockContainer(props) {
   const handlePlay = () => {
-    props.play(props.row, props.col, props.player);
+    props.play(props.row, props.col, props.turn);
+
+    // 상대측에게 클릭한 정보 보내주기
+    if (props.game === 1) {
+      props.multi.socket.emit("play", {
+        player: props.turn,
+        room: props.multi.room,
+        action: {
+          type: "click",
+          row: props.row,
+          col: props.col,
+        },
+      });
+    }
+  };
+  const isTurn = () => {
+    if (props.game === 0) {
+      return true;
+    } else if (props.game === 1) {
+      return props.turn === props.multi.user ? true : false;
+    } else {
+      return false;
+    }
   };
   return (
     <Block
@@ -13,13 +35,16 @@ function BlockContainer(props) {
       OnClick={handlePlay}
       row={props.row}
       col={props.col}
+      turn={isTurn()}
     />
   );
 }
 
 const mapStateToProps = (state) => ({
+  game: state.gameState.game,
   board: state.boardState.present.board,
-  player: state.boardState.present.player,
+  turn: state.boardState.present.player,
+  multi: state.boardState.multi,
 });
 
 const mapDispatchToProps = {

@@ -13,14 +13,18 @@ function Block(props) {
       state = <span className="dot color--white"></span>;
       break;
     case 2:
-      state = <span className="dot--small color--gray"></span>;
+      if (props.turn) {
+        state = <span className="dot--small color--gray"></span>;
+      } else {
+        state = "";
+      }
       break;
     default:
       break;
   }
 
   return (
-    <td onClick={props.value === 2 ? props.OnClick : () => {}}>
+    <td onClick={props.value === 2 && props.turn ? props.OnClick : () => {}}>
       <div className="dot-container">{state}</div>
     </td>
   );

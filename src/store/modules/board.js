@@ -1,17 +1,19 @@
 import { updateBoard, prepareNextBoard, getHistory } from "./othello";
 
-// 액션 타입 정의
+// 액션 타입 정의 (일반)
 const PLAY = "board/PLAY";
 const PASS = "board/PASS";
 const UNDO = "board/UNDO";
 const END = "board/END";
 
+// 액션 타입 정의 (멀티)
 const CONNECT = "multi/CONNECT";
 const CREATE = "multi/CREATE";
 const JOIN = "multi/JOIN";
 const OPPONENT = "multi/OPPONENT";
+const PLAYMULTI = "multi/PLAY";
 
-// 액션 생성 함수 정의
+// 액션 생성 함수 정의 (일반)
 export const play = (row, col, player) => ({
   type: PLAY,
   row,
@@ -22,6 +24,7 @@ export const pass = (player) => ({ type: PASS, player });
 export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
 
+// 액션 생성 함수 정의 (멀티)
 export const connectMulti = (socket) => ({ type: CONNECT, socket });
 export const createMulti = (player, room) => ({
   type: CREATE,
@@ -35,6 +38,7 @@ export const joinMulti = (player, opponent, room) => ({
   room,
 });
 export const opponent = (opponent) => ({ type: OPPONENT, opponent });
+export const playmulti = () => ({ type: PLAYMULTI });
 
 // 초기 상태 정의
 const initialState = {
@@ -90,6 +94,7 @@ export const boardReducer = (state = initialState, action) => {
       });
 
       return {
+        ...state,
         history: [new_history, ...state.history],
         present: {
           board: board,
@@ -119,6 +124,7 @@ export const boardReducer = (state = initialState, action) => {
       });
 
       return {
+        ...state,
         history: [new_history, ...state.history],
         present: {
           board: board,
@@ -136,6 +142,7 @@ export const boardReducer = (state = initialState, action) => {
       const undo = new_history.shift();
 
       return {
+        ...state,
         history: new_history,
         present: undo.undo,
       };
