@@ -1,4 +1,9 @@
-import { updateBoard, prepareNextBoard, getHistory } from "../../utils/othello";
+import {
+  updateBoard,
+  prepareNextBoard,
+  getHistory,
+  count,
+} from "../../utils/othello";
 
 // 액션 타입 정의 (일반)
 const PLAY = "board/PLAY";
@@ -55,6 +60,11 @@ const initialPresent = {
     [-1, -1, -1, -1, -1, -1, -1, -1],
   ],
   player: 0,
+  count: {
+    b: 2,
+    w: 2,
+    e: 60,
+  },
   canPass: [false, false],
   isEnd: false,
 };
@@ -97,12 +107,16 @@ export const boardReducer = (state = initialState, action) => {
         col: action.col,
       });
 
+      // Count 측정
+      const new_count = count(board);
+
       return {
         ...state,
         history: [new_history, ...state.history],
         present: {
           board: board,
           player: next_player,
+          count: new_count,
           canPass: new_pass,
           isEnd: isEnd,
         },
@@ -131,6 +145,7 @@ export const boardReducer = (state = initialState, action) => {
         ...state,
         history: [new_history, ...state.history],
         present: {
+          ...state.present,
           board: board,
           player: next_player,
           canPass: new_pass,

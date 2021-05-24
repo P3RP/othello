@@ -6,7 +6,7 @@ function History({ histories }) {
       <div className="history--title">History</div>
       <div id="abc" className="history--container">
         {histories.map((history) =>
-          history.player ? (
+          history.player === 0 ? (
             <div className="history--black history--block">
               {history.action}
             </div>

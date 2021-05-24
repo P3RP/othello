@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import Modal from "../Components/Modal";
+
 import ScoreContainer from "./ScoreContainer";
 import BoardContainer from "./BoardContainer";
 import HistoryContainer from "./HistoryContainer";
@@ -23,6 +25,7 @@ function GameContainer(props) {
     case 0:
       result = (
         <div>
+          <Modal />
           <div className="game-title">Othello Local</div>
           <div className="game-content">
             <ScoreContainer />

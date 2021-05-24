@@ -150,6 +150,24 @@ export const getClickAvailable = (board, player) => {
   return result;
 };
 
+export const count = (board) => {
+  const result = [0, 0, HEIGHT * WIDTH];
+  board.forEach((row) =>
+    row.forEach((element) => {
+      if (element === 0 || element === 1) {
+        result[element] += 1;
+      }
+    })
+  );
+  result[2] -= result[0];
+  result[2] -= result[1];
+  return {
+    b: result[0],
+    w: result[1],
+    e: result[2],
+  };
+};
+
 // ----------------------------------------------------------------------------------
 // 종료 조건
 // ----------------------------------------------------------------------------------
