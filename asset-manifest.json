@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.1f9ebf79.chunk.css",
-    "main.js": "/static/js/main.d5f53cdf.chunk.js",
-    "main.js.map": "/static/js/main.d5f53cdf.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e6e12108.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e6e12108.js.map",
-    "static/js/2.8268b3a5.chunk.js": "/static/js/2.8268b3a5.chunk.js",
-    "static/js/2.8268b3a5.chunk.js.map": "/static/js/2.8268b3a5.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.1f9ebf79.chunk.css.map": "/static/css/main.1f9ebf79.chunk.css.map",
-    "static/js/2.8268b3a5.chunk.js.LICENSE.txt": "/static/js/2.8268b3a5.chunk.js.LICENSE.txt"
+    "main.css": "/P3RP/othello/static/css/main.1f9ebf79.chunk.css",
+    "main.js": "/P3RP/othello/static/js/main.d5f53cdf.chunk.js",
+    "main.js.map": "/P3RP/othello/static/js/main.d5f53cdf.chunk.js.map",
+    "runtime-main.js": "/P3RP/othello/static/js/runtime-main.3ddafaa7.js",
+    "runtime-main.js.map": "/P3RP/othello/static/js/runtime-main.3ddafaa7.js.map",
+    "static/js/2.915cb712.chunk.js": "/P3RP/othello/static/js/2.915cb712.chunk.js",
+    "static/js/2.915cb712.chunk.js.map": "/P3RP/othello/static/js/2.915cb712.chunk.js.map",
+    "index.html": "/P3RP/othello/index.html",
+    "static/css/main.1f9ebf79.chunk.css.map": "/P3RP/othello/static/css/main.1f9ebf79.chunk.css.map",
+    "static/js/2.915cb712.chunk.js.LICENSE.txt": "/P3RP/othello/static/js/2.915cb712.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.e6e12108.js",
-    "static/js/2.8268b3a5.chunk.js",
+    "static/js/runtime-main.3ddafaa7.js",
+    "static/js/2.915cb712.chunk.js",
     "static/css/main.1f9ebf79.chunk.css",
     "static/js/main.d5f53cdf.chunk.js"
   ]
