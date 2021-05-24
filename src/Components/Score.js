@@ -1,16 +1,6 @@
 import React from "react";
 
 function Score(props) {
-  const checkWinner = () => {
-    if (props.count.b > props.count.w) {
-      return "Winner : Black";
-    } else if (props.count.b < props.count.w) {
-      return "Winner : White";
-    } else {
-      return "Draw";
-    }
-  };
-
   let classBlack, classWhite;
   if (props.player === 0) {
     classBlack = "profile profile--black profile--turn";
