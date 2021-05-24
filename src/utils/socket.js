@@ -10,7 +10,7 @@ import {
   opponentExit,
 } from "../store/modules/board";
 
-const ENDPOINT = "http://127.0.0.1:3001";
+const ENDPOINT = "http://15.165.120.63:3001";
 
 // Socket 연결
 const socket = socketIOClient(ENDPOINT);
