@@ -7,6 +7,7 @@ import {
   opponent,
   play,
   pass,
+  opponentExit,
 } from "../store/modules/board";
 
 const ENDPOINT = "http://127.0.0.1:3001";
@@ -34,7 +35,7 @@ socket.on("newPlayer", (data) => {
 });
 
 // 오류 발생 시 메시지 전달 받음
-socket.on("e_msg", (msg) => {
+socket.on("eMsg", (msg) => {
   console.log(msg);
 });
 
@@ -49,6 +50,11 @@ socket.on("play", (data) => {
   } else {
     return;
   }
+});
+
+// (멀티) 상대방 탈주!
+socket.on("opponentExit", () => {
+  store.dispatch(opponentExit());
 });
 
 export default socket;

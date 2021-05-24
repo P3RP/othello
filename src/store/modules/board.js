@@ -11,6 +11,8 @@ const CREATE = "multi/CREATE";
 const JOIN = "multi/JOIN";
 const OPPONENT = "multi/OPPONENT";
 const PLAYMULTI = "multi/PLAY";
+const EXIT = "multi/EXIT";
+const OPPONENTEXIT = "multi/OPPONENTEXIT";
 
 // 액션 생성 함수 정의 (일반)
 export const play = (row, col, player) => ({
@@ -37,32 +39,37 @@ export const joinMulti = (player, opponent, room) => ({
 });
 export const opponent = (opponent) => ({ type: OPPONENT, opponent });
 export const playmulti = () => ({ type: PLAYMULTI });
+export const exit = () => ({ type: EXIT });
+export const opponentExit = () => ({ type: OPPONENTEXIT });
 
 // 초기 상태 정의
+const initialPresent = {
+  board: [
+    [-1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, 2, -1, -1, -1],
+    [-1, -1, -1, 0, 1, 2, -1, -1],
+    [-1, -1, 2, 1, 0, -1, -1, -1],
+    [-1, -1, -1, 2, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1],
+  ],
+  player: 0,
+  canPass: [false, false],
+  isEnd: false,
+};
+
+const initialMulti = {
+  user: -1,
+  name: "",
+  opponent: "",
+  room: "",
+};
+
 const initialState = {
   history: [],
-  present: {
-    board: [
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, 2, -1, -1, -1],
-      [-1, -1, -1, 0, 1, 2, -1, -1],
-      [-1, -1, 2, 1, 0, -1, -1, -1],
-      [-1, -1, -1, 2, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-    ],
-    player: 0,
-    canPass: [false, false],
-    isEnd: false,
-  },
-  multi: {
-    user: -1,
-    name: "",
-    opponent: "",
-    room: "",
-    ready: false,
-  },
+  present: initialPresent,
+  multi: initialMulti,
 };
 
 // 리듀서 정의
@@ -188,6 +195,26 @@ export const boardReducer = (state = initialState, action) => {
         multi: {
           ...state.multi,
           opponent: action.opponent,
+        },
+      };
+    }
+
+    case EXIT: {
+      return {
+        history: [],
+        present: initialPresent,
+        multi: initialMulti,
+      };
+    }
+
+    case OPPONENTEXIT: {
+      return {
+        history: [],
+        present: initialPresent,
+        multi: {
+          ...state.multi,
+          user: 0,
+          opponent: "",
         },
       };
     }
