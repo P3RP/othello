@@ -6,6 +6,7 @@ import BoardContainer from "./BoardContainer";
 import HistoryContainer from "./HistoryContainer";
 import PassContainer from "./PassContainer";
 import UndoContainer from "./UndoContainer";
+import ExitContainer from "./ExitContainer";
 import socket from "../utils/socket";
 
 function RoomContainer(props) {
@@ -53,6 +54,7 @@ function RoomContainer(props) {
         </div>
         <PassContainer />
         <UndoContainer />
+        <ExitContainer />
       </div>
     );
   } else {
