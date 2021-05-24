@@ -27,9 +27,9 @@ function GameContainer(props) {
     case 0:
       result = (
         <div>
-          Local
-          <ScoreContainer />
-          <div>
+          <div className="game-title">Othello Local</div>
+          <div className="game-content">
+            <ScoreContainer />
             <BoardContainer />
           </div>
           <div>

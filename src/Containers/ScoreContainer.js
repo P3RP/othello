@@ -23,8 +23,34 @@ function ScoreContainer(props) {
     };
   };
 
+  const name = () => {
+    if (props.game === 0) {
+      return {
+        b: "Black",
+        w: "White",
+      };
+    } else {
+      if (props.multi.user === 0) {
+        return {
+          b: props.multi.name,
+          w: props.multi.opponent,
+        };
+      } else {
+        return {
+          b: props.multi.opponent,
+          w: props.multi.name,
+        };
+      }
+    }
+  };
+
   return (
-    <Score count={count()} isEnd={props.isEnd} player={props.player}></Score>
+    <Score
+      count={count()}
+      name={name()}
+      isEnd={props.isEnd}
+      player={props.player}
+    ></Score>
   );
 }
 
@@ -32,6 +58,8 @@ const mapStateToProps = (state) => ({
   board: state.boardState.present.board,
   player: state.boardState.present.player,
   isEnd: state.boardState.present.isEnd,
+  game: state.gameState.game,
+  multi: state.boardState.multi,
 });
 
 const mapDispatchToProps = {

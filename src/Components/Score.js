@@ -11,32 +11,38 @@ function Score(props) {
     }
   };
 
+  let classBlack, classWhite;
+  if (props.player === 0) {
+    classBlack = "profile profile--black profile--turn";
+    classWhite = "profile profile--white";
+  } else if (props.player === 1) {
+    classBlack = "profile profile--black";
+    classWhite = "profile profile--white profile--turn";
+  } else {
+    classBlack = "profile profile--black";
+    classWhite = "profile profile--white";
+  }
+
   return (
-    <div className="info-board">
-      <div className="game-title">Othello</div>
-      <div className="count-board">
-        <div>남은 칸 : {props.count.e}</div>
-        <div>
-          <span className="dot--big color--black"></span>
-          {" : " + props.count.b}
-        </div>
-        <div>
-          <span className="dot--big color--white"></span>
-          {" : " + props.count.w}
-        </div>
+    <div className="user-board">
+      <div className={classBlack}>
+        <div className="user-name">{props.name.b}</div>
+        <div className="count-block">{props.count.b}</div>
       </div>
-
-      <div>
-        현재 차례 :
-        {props.player ? (
-          <span className="dot--big color--white"></span>
-        ) : (
-          <span className="dot--big color--black"></span>
-        )}
+      <div className="btn-container">
+        <div>Undo</div>
+        <div>Pass</div>
       </div>
-
-      {props.isEnd ? <div>End!!</div> : null}
-      <div>{props.isEnd ? checkWinner() : null}</div>
+      <div className={classWhite}>
+        {props.name.w !== ""
+          ? [
+              <div className="user-name">{props.name.w}</div>,
+              <div className="count-block">{props.count.w}</div>,
+            ]
+          : "대기"}
+      </div>
+      {/* {props.isEnd ? <div>End!!</div> : null}
+      <div>{props.isEnd ? checkWinner() : null}</div> */}
     </div>
   );
 }

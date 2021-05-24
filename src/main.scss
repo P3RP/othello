@@ -21,16 +21,69 @@ body {
   flex-direction: column;
 }
 
-// Info
-.info-board {
+// ----------------------------------
+// 최상위 게임 관련
+// ----------------------------------
+
+.game-title {
+  font-size: 60px;
+  background-color: #faebd7;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 5%;
+}
+
+.game-content {
+  display: flex;
+}
+
+// ----------------------------------
+// 유저 정보
+// ----------------------------------
+
+// 유저 정보 관련 보드
+.user-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 250px;
+}
+
+// Profile 관련
+.profile {
+  width: 85%;
+  padding: 2%;
+  border-radius: 5%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.count-board {
+.profile--black {
+  background-color: $black;
+  color: $white;
+}
+
+.profile--white {
+  background-color: $white;
+}
+
+.profile--turn {
+  border: 4px solid #ff0000;
+  padding: calc(2% - 4px);
+}
+
+.count-block {
+  font-size: 5rem;
+}
+
+// 버튼 관련
+.btn-container {
+  width: 100%;
+
   display: flex;
-  width: 600px;
   justify-content: space-evenly;
 }
 
@@ -129,13 +182,4 @@ table {
   width: 110px;
   height: 55px;
   cursor: pointer;
-}
-
-.game-title {
-  font-size: 60px;
-  background-color: #faebd7;
-  width: 250px;
-  text-align: center;
-  margin: 10px 0;
-  border-radius: 25%;
 }

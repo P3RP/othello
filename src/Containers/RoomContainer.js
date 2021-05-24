@@ -58,9 +58,9 @@ function RoomContainer(props) {
   if (props.multi.room !== "") {
     return (
       <div>
-        Multi
-        <ScoreContainer />
-        <div>
+        <div className="game-title">Othello Multi</div>
+        <div className="game-content">
+          <ScoreContainer />
           <BoardContainer />
         </div>
         <div>
