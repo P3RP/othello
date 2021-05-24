@@ -66,8 +66,14 @@ function RoomContainer(props) {
           방 코드
           <input type="text" onChange={changeRoomId}></input>
         </label>
-        <div onClick={createRoom}>Create Room</div>
-        <div onClick={joinRoom}>Join Room</div>
+        <div className="btn-container">
+          <div className="room-btn" onClick={createRoom}>
+            Create Room
+          </div>
+          <div className="room-btn" onClick={joinRoom}>
+            Join Room
+          </div>
+        </div>
       </div>
     );
   }
