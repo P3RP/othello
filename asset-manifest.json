@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/P3RP/othello/static/css/main.1f9ebf79.chunk.css",
-    "main.js": "/P3RP/othello/static/js/main.d5f53cdf.chunk.js",
-    "main.js.map": "/P3RP/othello/static/js/main.d5f53cdf.chunk.js.map",
+    "main.js": "/P3RP/othello/static/js/main.d0c6a46a.chunk.js",
+    "main.js.map": "/P3RP/othello/static/js/main.d0c6a46a.chunk.js.map",
     "runtime-main.js": "/P3RP/othello/static/js/runtime-main.3ddafaa7.js",
     "runtime-main.js.map": "/P3RP/othello/static/js/runtime-main.3ddafaa7.js.map",
     "static/js/2.915cb712.chunk.js": "/P3RP/othello/static/js/2.915cb712.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.3ddafaa7.js",
     "static/js/2.915cb712.chunk.js",
     "static/css/main.1f9ebf79.chunk.css",
-    "static/js/main.d5f53cdf.chunk.js"
+    "static/js/main.d0c6a46a.chunk.js"
   ]
 }
