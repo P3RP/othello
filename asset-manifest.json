@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/othello/static/css/main.1f9ebf79.chunk.css",
-    "main.js": "/othello/static/js/main.d0c6a46a.chunk.js",
-    "main.js.map": "/othello/static/js/main.d0c6a46a.chunk.js.map",
+    "main.js": "/othello/static/js/main.8df793a0.chunk.js",
+    "main.js.map": "/othello/static/js/main.8df793a0.chunk.js.map",
     "runtime-main.js": "/othello/static/js/runtime-main.69e7f9c5.js",
     "runtime-main.js.map": "/othello/static/js/runtime-main.69e7f9c5.js.map",
     "static/js/2.f281fc15.chunk.js": "/othello/static/js/2.f281fc15.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.69e7f9c5.js",
     "static/js/2.f281fc15.chunk.js",
     "static/css/main.1f9ebf79.chunk.css",
-    "static/js/main.d0c6a46a.chunk.js"
+    "static/js/main.8df793a0.chunk.js"
   ]
 }
