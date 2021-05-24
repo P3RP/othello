@@ -36,8 +36,12 @@ function Score(props) {
       <div className={classWhite}>
         {props.name.w !== ""
           ? [
-              <div className="user-name">{props.name.w}</div>,
-              <div className="count-block">{props.count.w}</div>,
+              <div key="user-name" className="user-name">
+                {props.name.w}
+              </div>,
+              <div key="count-block" className="count-block">
+                {props.count.w}
+              </div>,
             ]
           : "대기"}
       </div>

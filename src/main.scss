@@ -29,8 +29,13 @@ body {
   font-size: 60px;
   background-color: #faebd7;
   text-align: center;
-  margin: 10px 0;
   border-radius: 5%;
+}
+
+.room-info {
+  font-size: 1rem;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .game-content {

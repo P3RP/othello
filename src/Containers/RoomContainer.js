@@ -50,6 +50,11 @@ function RoomContainer(props) {
     props.joinMulti({ player: 1, name: userName }, opponent, roomId);
   });
 
+  // 새로운 사용자 방 입장
+  props.multi.socket.on("newPlayer", (opponent) => {
+    props.opponent(opponent);
+  });
+
   // 오류 발생 시 메시지 전달 받음
   props.multi.socket.on("e_msg", (msg) => {
     console.log(msg);
@@ -59,6 +64,7 @@ function RoomContainer(props) {
     return (
       <div>
         <div className="game-title">Othello Multi</div>
+        <div className="room-info">{"Room : " + props.multi.room}</div>
         <div className="game-content">
           <ScoreContainer />
           <BoardContainer />
