@@ -25,7 +25,9 @@ function BlockContainer(props) {
     if (props.game === 0) {
       return true;
     } else if (props.game === 1) {
-      return props.turn === props.multi.user ? true : false;
+      return props.multi.opponent !== "" && props.turn === props.multi.user
+        ? true
+        : false;
     } else {
       return false;
     }
