@@ -10,6 +10,7 @@ const PLAY = "board/PLAY";
 const PASS = "board/PASS";
 const UNDO = "board/UNDO";
 const END = "board/END";
+const RESET = "board/RESET";
 
 // 액션 타입 정의 (멀티)
 const CREATE = "multi/CREATE";
@@ -29,6 +30,7 @@ export const play = (row, col, player) => ({
 export const pass = (player) => ({ type: PASS, player });
 export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
+export const reset = () => ({ type: RESET });
 
 // 액션 생성 함수 정의 (멀티)
 export const createMulti = (player, room) => ({
@@ -176,6 +178,16 @@ export const boardReducer = (state = initialState, action) => {
           ...state.present,
           isEnd: true,
         },
+      };
+    }
+
+    case RESET: {
+      console.log("reset");
+
+      return {
+        ...state,
+        history: [],
+        present: initialPresent,
       };
     }
 
