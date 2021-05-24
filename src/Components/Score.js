@@ -1,5 +1,8 @@
 import React from "react";
 
+import PassContainer from "../Containers/PassContainer";
+import UndoContainer from "../Containers/UndoContainer";
+
 function Score(props) {
   let classBlack, classWhite;
   if (props.player === 0) {
@@ -20,8 +23,8 @@ function Score(props) {
         <div className="count-block">{props.count.b}</div>
       </div>
       <div className="btn-container">
-        <div>Undo</div>
-        <div>Pass</div>
+        <UndoContainer />
+        <PassContainer />
       </div>
       <div className={classWhite}>
         {props.name.w !== ""
@@ -35,8 +38,6 @@ function Score(props) {
             ]
           : "대기"}
       </div>
-      {/* {props.isEnd ? <div>End!!</div> : null}
-      <div>{props.isEnd ? checkWinner() : null}</div> */}
     </div>
   );
 }

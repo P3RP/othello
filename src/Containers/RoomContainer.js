@@ -4,9 +4,8 @@ import { connect } from "react-redux";
 import ScoreContainer from "./ScoreContainer";
 import BoardContainer from "./BoardContainer";
 import HistoryContainer from "./HistoryContainer";
-import PassContainer from "./PassContainer";
-import UndoContainer from "./UndoContainer";
 import ExitContainer from "./ExitContainer";
+import ModalContainer from "./ModalContainer";
 import socket from "../utils/socket";
 
 function RoomContainer(props) {
@@ -43,6 +42,7 @@ function RoomContainer(props) {
   if (props.multi.room !== "") {
     return (
       <div>
+        <ModalContainer />
         <div className="game-title">Othello Multi</div>
         <div className="room-info">{"Room : " + props.multi.room}</div>
         <div className="game-content">
@@ -52,8 +52,6 @@ function RoomContainer(props) {
         <div>
           <HistoryContainer />
         </div>
-        <PassContainer />
-        <UndoContainer />
         <ExitContainer />
       </div>
     );

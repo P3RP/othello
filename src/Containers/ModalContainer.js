@@ -34,13 +34,16 @@ function ModalContainer(props) {
     }
   };
 
-  return (
+  return props.isEnd ? (
     <Modal
       isEnd={props.isEnd}
       count={props.count}
       winner={checkWinner()}
       name={name()}
+      game={props.game}
     ></Modal>
+  ) : (
+    ""
   );
 }
 

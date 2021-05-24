@@ -5,8 +5,6 @@ import ModalContainer from "./ModalContainer";
 import ScoreContainer from "./ScoreContainer";
 import BoardContainer from "./BoardContainer";
 import HistoryContainer from "./HistoryContainer";
-import PassContainer from "./PassContainer";
-import UndoContainer from "./UndoContainer";
 import RoomContainer from "./RoomContainer";
 import { select } from "../store/modules/game";
 
@@ -33,8 +31,6 @@ function GameContainer(props) {
           <div>
             <HistoryContainer />
           </div>
-          <PassContainer />
-          <UndoContainer />
         </div>
       );
       break;

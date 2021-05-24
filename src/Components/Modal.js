@@ -1,5 +1,8 @@
 import React from "react";
 
+import ResetContainer from "../Containers/ResetContainer";
+import ExitContainer from "../Containers/ExitContainer";
+
 function Modal(props) {
   const win = () => {
     if (props.winner === 0) {
@@ -8,6 +11,16 @@ function Modal(props) {
       return "Winner : " + props.name.w;
     } else if (props.winner === -1) {
       return "Draw";
+    } else {
+      return "";
+    }
+  };
+
+  const button = () => {
+    if (props.game === 0) {
+      return <ResetContainer />;
+    } else if (props.game === 1) {
+      return <ExitContainer />;
     } else {
       return "";
     }
@@ -27,7 +40,7 @@ function Modal(props) {
             <div className="count-block">{props.count.w}</div>
           </div>
         </div>
-        <div>Button</div>
+        {button()}
       </div>
     </div>
   );
