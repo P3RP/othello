@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import socketIOClient from "socket.io-client";
 
 import ScoreContainer from "./ScoreContainer";
 import BoardContainer from "./BoardContainer";
@@ -9,9 +8,6 @@ import PassContainer from "./PassContainer";
 import UndoContainer from "./UndoContainer";
 import RoomContainer from "./RoomContainer";
 import { select } from "../store/modules/game";
-import { connectMulti } from "../store/modules/board";
-
-const ENDPOINT = "http://127.0.0.1:3001";
 
 function GameContainer(props) {
   let result;
@@ -41,10 +37,6 @@ function GameContainer(props) {
       );
       break;
     case 1:
-      // Socket 연결
-      const socket = socketIOClient(ENDPOINT);
-      props.connectMulti(socket);
-
       result = <RoomContainer />;
       break;
     default:
@@ -59,7 +51,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   select,
-  connectMulti,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Block from "../Components/Block";
 import { play } from "../store/modules/board";
+import socket from "../utils/socket";
 
 function BlockContainer(props) {
   const handlePlay = () => {
@@ -9,7 +10,7 @@ function BlockContainer(props) {
 
     // 상대측에게 클릭한 정보 보내주기
     if (props.game === 1) {
-      props.multi.socket.emit("play", {
+      socket.emit("play", {
         player: props.turn,
         room: props.multi.room,
         action: {

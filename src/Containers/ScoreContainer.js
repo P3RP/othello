@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Score from "../Components/Score";
 import { end } from "../store/modules/board";
-import { HEIGHT, WIDTH } from "../store/modules/othello";
+import { HEIGHT, WIDTH } from "../utils/othello";
 
 function ScoreContainer(props) {
   const count = () => {

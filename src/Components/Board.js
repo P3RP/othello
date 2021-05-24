@@ -1,6 +1,6 @@
 import React from "react";
 import BlockContainer from "../Containers/BlockContainer";
-import { HEIGHT, WIDTH } from "../store/modules/othello";
+import { HEIGHT, WIDTH } from "../utils/othello";
 
 function Board({ board, onPlay }) {
   const trIdx = [];

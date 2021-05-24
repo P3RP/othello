@@ -1,4 +1,4 @@
-import { updateBoard, prepareNextBoard, getHistory } from "./othello";
+import { updateBoard, prepareNextBoard, getHistory } from "../../utils/othello";
 
 // 액션 타입 정의 (일반)
 const PLAY = "board/PLAY";
@@ -7,7 +7,6 @@ const UNDO = "board/UNDO";
 const END = "board/END";
 
 // 액션 타입 정의 (멀티)
-const CONNECT = "multi/CONNECT";
 const CREATE = "multi/CREATE";
 const JOIN = "multi/JOIN";
 const OPPONENT = "multi/OPPONENT";
@@ -25,7 +24,6 @@ export const undo = () => ({ type: UNDO });
 export const end = () => ({ type: END });
 
 // 액션 생성 함수 정의 (멀티)
-export const connectMulti = (socket) => ({ type: CONNECT, socket });
 export const createMulti = (player, room) => ({
   type: CREATE,
   player,
@@ -59,7 +57,6 @@ const initialState = {
     isEnd: false,
   },
   multi: {
-    socket: "",
     user: -1,
     name: "",
     opponent: "",
@@ -156,16 +153,6 @@ export const boardReducer = (state = initialState, action) => {
         present: {
           ...state.present,
           isEnd: true,
-        },
-      };
-    }
-
-    case CONNECT: {
-      return {
-        ...state,
-        multi: {
-          ...state.multi,
-          socket: action.socket,
         },
       };
     }
