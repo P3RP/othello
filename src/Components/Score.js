@@ -23,7 +23,7 @@ function Score(props) {
         <div className="count-block">{props.count.b}</div>
       </div>
       <div className="btn-container">
-        <UndoContainer />
+        {props.game === 0 ? <UndoContainer /> : null}
         <PassContainer />
       </div>
       <div className={classWhite}>

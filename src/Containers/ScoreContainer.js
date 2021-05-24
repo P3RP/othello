@@ -31,6 +31,7 @@ function ScoreContainer(props) {
       name={name()}
       isEnd={props.isEnd}
       player={props.player}
+      game={props.game}
     ></Score>
   );
 }
